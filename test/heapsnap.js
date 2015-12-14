@@ -125,7 +125,7 @@ function genNodeLabel(node) {
 }
 
 
-var takeHeapSnapshot = function() {
+var takeHeapSnapshot = function(done) {
   var seen = {};
   var groups = {};
   var totalSize = 0;
@@ -163,7 +163,7 @@ var takeHeapSnapshot = function() {
       }
     }
   });
-
+  if (Object.keys(nodes).length > 0) done();
 
   for(var prop in nodes) {
     var node = nodes[prop];
@@ -232,9 +232,15 @@ var takeHeapSnapshot = function() {
     delete obj.instances;
   }
 
-  console.log(require('util').inspect(groupsOrdered, true, 20, true));
+  //console.log(require('util').inspect(groupsOrdered, true, 20, true));
   //console.log(groupsOrdered);
 };
 
-takeHeapSnapshot();
-
+describe('v8tools', function() {
+   this.timeout(120000);
+   describe('#takeHeapSnapshot1())', function () {
+     it('should get heap snapshot metric  without error', function(done) {
+             takeHeapSnapshot(done);
+	});
+   });
+});

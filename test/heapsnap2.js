@@ -55,6 +55,7 @@ function nodeTypeToString(type) {
   }
 }
 
+var takeHeapSnapshot = function(done) {
 var seen = {};
 var stats = {};
 var totalSize = 0;
@@ -106,7 +107,7 @@ function calculateRetainedSize(depth, walked, node) {
 
   return retainedSize;
 }
-
+  if (Object.keys(nodes).length > 0) done();
 var walked = {};
 for(var prop in nodes) {
   var node = nodes[prop];
@@ -135,7 +136,6 @@ for(var prop in nodes) {
   totalCount++; 
 }
 
-
 var statsOrdered = [];
 for(var key in stats) {
   var obj = stats[key];
@@ -149,7 +149,18 @@ statsOrdered = statsOrdered.sort(function(a, b) {
   return b.size - a.size;
 });
 
+//if (statsOrdered.length > 0) done();
 console.log(statsOrdered.slice(0, 10));
+}
+
+describe('v8tools', function() {
+   this.timeout(60000);
+   describe('#takeHeapSnapshot2())', function () {
+     it('should get heapsnapshot metric without error', function(done) {
+             takeHeapSnapshot(done);
+        });
+   });
+});
 //console.log(statsOrdered);
 
 

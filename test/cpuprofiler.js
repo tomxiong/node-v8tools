@@ -26,8 +26,29 @@ function test1() {
 
 test1();
 
-v8tools.stopV8Profiler(function(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber) {
-  console.log(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber);
-});
+var cpuprofilers = {};
+
+describe('v8tools', function() {
+   this.timeout(120000);
+   describe('#stopV8Profiler()', function () {
+     it('should get cpuprofiler  without error', function(done) {
+	v8tools.stopV8Profiler(function(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber) {
+	  console.log(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber);
+	  var key = scriptResourceName + lineNumber;
+          cpuprofilers[nodeUid] = {
+		parentNodeUid : parentNodeUid,
+	        nodeUid : nodeUid,
+		totalSamplesCount : totalSamplesCount,
+		functionName : functionName,
+		scriptResourceName : scriptResourceName,
+		lineNumber : lineNumber}
+
+	  if (nodeUid == 40) done();
+	
+	});
+//	done();
+     });
+   });
+});		
 
 
