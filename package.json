@@ -1,6 +1,6 @@
 {
-  "name": "v8tools",
-  "version": "0.2.3",
+  "name": "node-v8tools",
+  "version": "0.2.4",
   "description": "V8 profiler and GC bindings",
   "author": {
     "name": "Tom Xiong",
@@ -46,6 +46,6 @@
     "url": "https://github.com/tomxiong/node-v8tools/issues"
   },
   "homepage": "https://github.com/tomxiong/node-v8tools",
-  "_id": "v8tools@0.2.2",
-  "_from": "v8tools@*"
+  "_id": "node-v8tools@0.2.4",
+  "_from": "node-v8tools@*"
 }

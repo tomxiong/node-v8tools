@@ -33,7 +33,7 @@ describe('v8tools', function() {
    describe('#stopV8Profiler()', function () {
      it('should get cpuprofiler  without error', function(done) {
 	v8tools.stopV8Profiler(function(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber) {
-	  console.log(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber);
+	  //console.log(parentNodeUid, nodeUid, totalSamplesCount, functionName, scriptResourceName, lineNumber);
 	  var key = scriptResourceName + lineNumber;
           cpuprofilers[nodeUid] = {
 		parentNodeUid : parentNodeUid,

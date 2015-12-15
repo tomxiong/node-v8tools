@@ -6,7 +6,7 @@ describe('v8tools', function() {
 	var isDone = false;
 	v8tools.afterGC(function(gcType, gcFlags, usedHeapSize) {
 	  console.log('GC Type', gcType);
-	  console.log('GC Flags', gcFlags);
+	  //console.log('GC Flags', gcFlags);
 	  console.log('Used Heap Size', usedHeapSize);
 	  if (!isDone) {
 		done();
