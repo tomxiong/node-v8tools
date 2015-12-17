@@ -19,8 +19,11 @@
   "contributors": [],
   "main": "./v8tools.js",
   "dependencies": {
-    "bindings": "*",
-    "mocha": "*"
+    "bindings": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "debug": "*"
   },
   "repository": {
     "type": "git",
